@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 
+
+
+
+
+import { useState } from "react";
+import Navbar from './components/Navbar/Navbar';
+import Banner from './components/Banner/Banner';
+import ProductList from './components/products/ProductList';
+import Cart from './components/Cart/Cart';
+import Footer from './components/Footer/Footer';
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (product) => {
+    const exists = cart.find((item) => item.id === product.id);
+    if (exists) {
+      setCart(
+        cart.map((item) =>
+          item.id === product.id ? { ...item, qty: item.qty + 1 } : item
+        )
+      );
+    } else {
+      setCart([...cart, { ...product, qty: 1 }]);
+    }
+  };
+
+  const removeFromCart = (id) => {
+    setCart(cart.filter((item) => item.id !== id));
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className='w-3/4 mx-auto'>
+    <Navbar></Navbar>
+     <Banner></Banner>
+
+      <div className="p-6 grid md:grid-cols-2 gap-6 cart bg-gray-50 shadow-lg rounded-lg">
+        <ProductList addToCart={addToCart} />
+        <Cart cart={cart} removeFromCart={removeFromCart} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+<Footer></Footer>
+    </div>
+  );
 }
 
-export default App
+export default App;
