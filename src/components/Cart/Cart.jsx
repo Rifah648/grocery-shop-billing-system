@@ -15,6 +15,8 @@ function Cart({ cart, increaseQty, decreaseQty, removeFromCart, clearCart, addBi
       return;
     }
 
+    
+
     const billData = {
       id: Date.now(),
       name,
@@ -27,11 +29,16 @@ function Cart({ cart, increaseQty, decreaseQty, removeFromCart, clearCart, addBi
     };
 
     addBillToHistory(billData);
-    clearCart();
+   
 
     setTimeout(() => {
       window.print();
-    }, 100);
+
+      setTimeout(() =>{ 
+      clearCart();
+    }, 500);
+  }, 300);
+
   };
 
   return (
@@ -126,7 +133,8 @@ function Cart({ cart, increaseQty, decreaseQty, removeFromCart, clearCart, addBi
 
           <button
             className="mt-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded print:hidden"
-            onClick={handlePayment}
+            onClick={handlePayment} 
+            
             disabled={!name || !phone || !pin}
           >
             Confirm Payment & Print
