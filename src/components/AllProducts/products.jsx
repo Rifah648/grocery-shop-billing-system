@@ -86,7 +86,7 @@
   },
   {
     "id": 15,
-    "product": "Tissue Paper",
+    "product": "Tissue",
     "price": 25
     
   },
@@ -116,7 +116,7 @@
   },
   {
     "id": 20,
-    "product": "Soft Drinks",
+    "product": "Drinks",
     "price": 35
    
 },
@@ -124,6 +124,28 @@
 {
   "id": 21,
   "product": "Chips",
+  "price": 20
+ 
+}
+,
+
+{
+  "id": 22,
+  "product": "Chocolate",
+  "price": 20
+ 
+},
+
+{
+  "id": 23,
+  "product": "Candy",
+  "price": 10
+ 
+},
+
+{
+  "id": 24,
+  "product": "Gum",
   "price": 20
  
 }

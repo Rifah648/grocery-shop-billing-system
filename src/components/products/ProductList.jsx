@@ -24,10 +24,10 @@ function ProductList({ addToCart }) {
         />
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 w-[90%] mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-8 gap-4 w-[90%] mx-auto">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
-            <div key={product.id} className="bg-white shadow rounded-xl p-4 max-w-sm">
+            <div key={product.id} className="bg-white shadow rounded-xl p-2 max-w-sm">
               <h3 className="font-bold text-lg mb-1">{product.product}</h3>
               <p className="mb-2">Price: {product.price}৳</p>
               <button
